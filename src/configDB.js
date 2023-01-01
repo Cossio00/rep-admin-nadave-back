@@ -1,10 +1,10 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+const sqlite3 = require('sqlite3');
+const { open } = require('sqlite');
 
-export async function openDB(){
+module.exports= {
+    async openDB(){
     return open({
         filename: './database.db',
         driver: sqlite3.Database
     })
-
-}
+}}

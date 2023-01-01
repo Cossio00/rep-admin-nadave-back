@@ -1,24 +1,25 @@
-import { createTableUserType } from './Controller/UserType.js';
-import { createTableUser, insertUser, updateUser, selectUsers, selectUser } from './Controller/User.js'
+const UserType = require('./Controller/UserType');
+const User = require('./Controller/User');
+const Operation = require('./Controller/Operation');
 
-import express from 'express';
-import router from './routes.js';
+const express = require('express');
+const router = require('./routes.js');
+const fs = require('fs');
+const https = require('https');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use(router);
-createTableUserType();
-createTableUser();
+UserType.createTableUserType();
+User.createTableUser();
+Operation.createTableOperation();
 
 
-/*
-app.get('/users', selectUsers)
-
-app.get('/users/:id', selectUser)
-
-app.post('/user', insertUser)
-
-app.put('/user/:id', updateUser)
-*/
 
 app.listen(3010, ()=>console.log("API rodando..."))
+https.createServer({
+    cert: fs.readFileSync('./src/SSL/code.crt'),
+    key: fs.readFileSync('./src/SSL/code.key')
+}, app).listen(3001, ()=> console.log("Rodando em HTTPS..."));
