@@ -4,12 +4,14 @@ const { Router } = require('express');
 //import { selectOperations, insertOperation } from "./Controller/Operation";
 
 const router = Router();
-const { selectUserTypes } = require('./Controller/UserType');
+const { selectUserTypes, selectUserType } = require('./Controller/UserType');
 const { insertUser, updateUser, selectUsers, selectUser, deleteUser } = require('./Controller/User');
 const { selectOperations, insertOperation, selectOperationsByUser } = require('./Controller/Operation');
 
 
 router.get('/usertypes', selectUserTypes)
+router.get('/usertype/:usertypeid', selectUserType)
+
 
 router.get('/users', selectUsers)
 router.get('/user/:userid', selectUser)

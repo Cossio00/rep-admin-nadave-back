@@ -1,5 +1,5 @@
 const crypto = require('crypto');
-const { openDB } = require('../configDB');
+const { openDB } = require('../dbConfig/configDB');
 
 module.exports={
 

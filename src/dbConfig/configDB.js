@@ -1,3 +1,17 @@
+const config = {
+    db: {
+        host: "localhost",
+        user: "root",
+        password: "rootadminpassword",  
+        database: "repadmin"
+    }
+};
+module.exports = config;
+
+
+
+
+/*
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
 
@@ -8,3 +22,5 @@ module.exports= {
         driver: sqlite3.Database
     })
 }}
+
+*/
